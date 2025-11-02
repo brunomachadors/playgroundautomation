@@ -19,15 +19,9 @@ test.describe('FORMS', () => {
           .getByRole('textbox', { name: 'Password *' })
           .fill(user.password);
 
-        if (user.genderValue === 'other') {
-          await page
-            .locator('input[type="radio"][name="gender"][value="other"]')
-            .check();
-        } else {
-          await page
-            .locator('label', { hasText: new RegExp(`^${user.gender}$`, 'i') })
-            .click();
-        }
+        await page
+          .getByRole('radio', { name: user.gender, exact: true })
+          .check();
       });
 
       await test.step('Select hobbies (if any)', async () => {
@@ -45,7 +39,7 @@ test.describe('FORMS', () => {
   }
 });
 
-test.describe('Error missing field', () => {
+test.describe('FORM - ERROR', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/form');
     await expect(page.getByRole('heading', { name: 'Form' })).toBeVisible();
