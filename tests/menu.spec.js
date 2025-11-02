@@ -1,6 +1,6 @@
 import test, { expect } from '@playwright/test';
 
-test.describe('Menu Navigation', () => {
+test.describe('MENU', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://playground-drab-six.vercel.app/');
   });

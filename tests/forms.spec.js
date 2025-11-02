@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { USERS, FORM_MESSAGES } from './data/forms';
 
-test.describe('Forms – data-driven (one test per user)', () => {
+test.describe('FORMS', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/form');
     await expect(page.getByRole('heading', { name: 'Form' })).toBeVisible();
