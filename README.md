@@ -89,22 +89,22 @@ npx playwright test
 playwright-warmup/
 │
 ├── tests/                  # Test files for each lesson
-│   ├── lesson01_first_test.spec.ts
-│   ├── lesson02_login.spec.ts
-│   ├── lesson03_forms.spec.ts
-│   ├── lesson04_pom.spec.ts
-│   ├── lesson05_tables.spec.ts
-│   ├── lesson06_api.spec.ts
-│   ├── lesson07_crud.spec.ts
-│   └── lesson08_store.spec.ts
+│   ├── menu.spec.ts
+│   ├── login.spec.ts
+│   ├── login.spec.ts
+│   ├── pom.spec.ts
+│   ├── tables.spec.ts
+│   ├── api.spec.ts
+│   ├── toTo.spec.ts
+│   └── store.spec.ts
 │
 ├── pages/                  # Page Object Model (POM) structure
 │   ├── login.page.ts
 │   ├── form.page.ts
 │   └── dashboard.page.ts
 │
-├── utils/                  # Helpers, constants, data
-│   └── users.ts
+├── data/                  # Helpers, constants, data
+│   └── login.ts
 │
 ├── playwright.config.ts    # Playwright configuration file
 ├── package.json
