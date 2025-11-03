@@ -1,19 +1,23 @@
+import dotenv from 'dotenv';
+// import path from 'path';
+dotenv.config({ quiet: true });
+
 export const USERS = {
   valid: {
-    username: 'test',
-    password: 'password123',
+    username: process.env.VALID_USERNAME,
+    password: process.env.VALID_PASSWORD,
   },
   blocked: {
-    username: 'testblock',
-    password: 'password123',
+    username: process.env.BLOCKED_USERNAME,
+    password: process.env.BLOCKED_PASSWORD,
   },
   invalid: {
-    username: 'invalidUser',
-    password: 'password123',
+    username: process.env.INVALID_USERNAME,
+    password: process.env.INVALID_PASSWORD,
   },
   wrongPassword: {
-    username: 'test',
-    password: 'password1234',
+    username: process.env.WRONG_PASSWORD_USERNAME,
+    password: process.env.WRONG_PASSWORD_PASSWORD,
   },
 };
 

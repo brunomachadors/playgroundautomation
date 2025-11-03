@@ -7,6 +7,7 @@ test.describe('LOGIN', () => {
   });
 
   test('Login Successful', async ({ page }) => {
+
     await test.step('Fill valid credentials and submit', async () => {
       await page
         .getByRole('textbox', { name: 'Type your username' })

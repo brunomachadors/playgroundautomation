@@ -1,27 +1,69 @@
 name: Playwright Tests
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
+    # ▼ Exporta secrets como variables no job
+    env:
+      VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
+      VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+      BLOCKED_USERNAME: ${{ secrets.BLOCKED_USERNAME }}
+      BLOCKED_PASSWORD: ${{ secrets.BLOCKED_PASSWORD }}
+      INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
+      INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
+      WRONG_PASSWORD_USERNAME: ${{ secrets.WRONG_PASSWORD_USERNAME }}
+      WRONG_PASSWORD_PASSWORD: ${{ secrets.WRONG_PASSWORD_PASSWORD }}
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # (Opcional) Checagem de debug — mostra se variáveis existem (apenas ***)
+      - name: Sanity check env (masked)
+        run: |
+          echo "VALID_USERNAME set? ${{ env.VALID_USERNAME != '' }}"
+          echo "BLOCKED_USERNAME set? ${{ env.BLOCKED_USERNAME != '' }}"
+          echo "INVALID_USERNAME set? ${{ env.INVALID_USERNAME != '' }}"
+          echo "WRONG_PASSWORD_USERNAME set? ${{ env.WRONG_PASSWORD_USERNAME != '' }}"
+          env | grep -E '^(VALID_|BLOCKED_|INVALID_|WRONG_)' || true
+
+      # (Opcional) Falhar se alguma estiver vazia
+      - name: Fail if required secrets missing
+        run: |
+          required_vars=(VALID_USERNAME VALID_PASSWORD BLOCKED_USERNAME)
+          missing=0
+          for v in "${required_vars[@]}"; do
+            if [ -z "${!v}" ]; then
+              echo "❌ Missing $v"
+              missing=1
+            fi
+          done
+          exit $missing
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
