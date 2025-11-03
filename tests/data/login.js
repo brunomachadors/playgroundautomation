@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+// import path from 'path';
+dotenv.config({ quiet: true });
+
 export const USERS = {
   valid: {
     username: process.env.VALID_USERNAME,
