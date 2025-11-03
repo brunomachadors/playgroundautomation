@@ -11,9 +11,8 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
-    # ▼ Exporta secrets/vars como env no job
+    # ▼ Exporta secrets como variables no job
     env:
-      # Secrets (credenciais dos cenários)
       VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
       VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
       BLOCKED_USERNAME: ${{ secrets.BLOCKED_USERNAME }}
@@ -37,20 +36,19 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # (Opcional) Verificação rápida de envs carregadas
+      # (Opcional) Checagem de debug — mostra se variáveis existem (apenas ***)
       - name: Sanity check env (masked)
         run: |
           echo "VALID_USERNAME set? ${{ env.VALID_USERNAME != '' }}"
           echo "BLOCKED_USERNAME set? ${{ env.BLOCKED_USERNAME != '' }}"
           echo "INVALID_USERNAME set? ${{ env.INVALID_USERNAME != '' }}"
           echo "WRONG_PASSWORD_USERNAME set? ${{ env.WRONG_PASSWORD_USERNAME != '' }}"
-          # Mostra apenas chaves iniciadas por VALID_/BLOCKED_/INVALID_/WRONG_ (valores serão mascarados com ***)
           env | grep -E '^(VALID_|BLOCKED_|INVALID_|WRONG_)' || true
 
-      # (Opcional) Falha se algum obrigatório estiver vazio
-      - name: Fail if required env missing
+      # (Opcional) Falhar se alguma estiver vazia
+      - name: Fail if required secrets missing
         run: |
-          required_vars=(VALID_USERNAME VALID_PASSWORD BASE_URL)
+          required_vars=(VALID_USERNAME VALID_PASSWORD BLOCKED_USERNAME)
           missing=0
           for v in "${required_vars[@]}"; do
             if [ -z "${!v}" ]; then
