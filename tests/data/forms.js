@@ -8,7 +8,14 @@ export const USERS = [
     countryValue: 'brazil',
     gender: 'Male',
     genderValue: 'male',
-    hobbies: ['Read books', 'Travel', 'Video Games', 'Sports', 'Movies', 'Board Games'],
+    hobbies: [
+      'Read books',
+      'Travel',
+      'Video Games',
+      'Sports',
+      'Movies',
+      'Board Games',
+    ],
   },
   {
     scenario: 'No Hobbies',
@@ -29,7 +36,7 @@ export const USERS = [
     countryLabel: 'Canada',
     countryValue: 'canada',
     gender: 'Other',
-    genderValue: 'other', 
+    genderValue: 'other',
     hobbies: ['Movies', 'Board Games'],
   },
   {
@@ -61,4 +68,10 @@ export const FORM_MESSAGES = {
   successBody: 'The form has been submitted',
 };
 
-
+export const ERROR_MESSAGES = {
+  name: 'The name field is required.',
+  email: 'The email field is required.',
+  password: 'The password field is required.',
+  country: 'The country field is required.',
+  gender: 'The gender field is required.',
+};
