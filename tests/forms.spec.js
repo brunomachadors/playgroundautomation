@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { FormPage } from './pages/form.page';
-import { USERS, FORM_MESSAGES, ERROR_MESSAGES } from './data/forms';
+import { USERS, FORM_MESSAGES, ERROR_MESSAGES } from './data/forms.data';
 
 test.describe('Forms', () => {
   for (const user of USERS) {
