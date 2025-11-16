@@ -28,10 +28,8 @@ test.describe('TASKS - DESKTOP', () => {
   test('edit task', async ({ page }) => {
     const tasks = new TasksPage(page);
     const { original, edited } = TASK_CASES.EDIT;
-
     await tasks.addTask(original);
     await tasks.editTaskDesktop(1, edited);
-
     await tasks.expectTaskVisibleDesktop(1, edited);
   });
 
