@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { TasksPage } from './pages/tasks.page.js';
-import { TASK_CASES } from './data/tasks.data.js';
+import { TASK_CASES } from '../../data/tasks.data.js';
+import { TasksPage } from '../../pages/tasks.page.js';
 
 test.describe('TASKS - DESKTOP', () => {
   test.beforeEach(async ({ page }) => {

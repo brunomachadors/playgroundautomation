@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { TYPES } from './data/pokemon-type.js';
+import { TYPES } from '../../data/pokemon-type.js';
 
 const BASE = 'https://pokeapi.co/api/v2/type/';
 

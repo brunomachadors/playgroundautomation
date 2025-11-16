@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 
-import hpCharacters from './data/json/hpCharacters.json' assert { type: 'json' };
-import { HPTablePage } from './pages/table.page';
+import hpCharacters from '../../data/json/hpCharacters.json' assert { type: 'json' };
+import { HPTablePage } from '../../pages/table.page';
 
 test.describe('HP TABLE', () => {
   test.beforeEach(async ({ page }) => {
