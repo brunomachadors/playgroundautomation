@@ -1,196 +1,279 @@
-
 # 🎭 Test Automation Warm-Up with Playwright
 
-Welcome to the **Test Automation Warm-Up with Playwright** — a hands-on project designed for the **Mindera Code Academy** course.  
-This repository serves as the foundation for all practical sessions, from the first test setup to the final project (the Lojinha!).
+Welcome to the **Warm-Up: Test Automation with Playwright** project — the official hands-on automation playground used during the **Mindera Code Academy** course.
+
+This repository was designed to teach students **real-world, industry-level automation practices**, starting from the basics and evolving into a scalable, fully structured Playwright framework using Page Objects, reusable assertions, mobile testing, and API automation.
 
 ---
 
-## 🚀 Project Overview
+# 🚀 Project Overview
 
-This project aims to introduce **end-to-end testing with Playwright**, providing students with the fundamental skills to create, organize, and execute automated tests for web applications.
+This project introduces full-stack test automation using **Playwright**, guiding students through:
 
-Throughout the course, participants will learn how to automate different scenarios such as:
-- UI interaction and navigation
-- Form validation
-- Dynamic tables
-- API testing
-- CRUD applications
-- Full e-commerce flow (final project)
+* UI automation
+* Form handling
+* Dynamic tables
+* Advanced locators
+* Page Object Model (POM)
+* Mobile testing
+* Drag & drop
+* CRUD scenarios
+* API testing using `APIRequestContext`
+* Final project — full e-commerce workflow
 
----
+Everything is automated against the custom-built training app:
 
-🌐 Test Playground Application
-
-Throughout this course, we’ll use the following application for our automation exercises:
-👉 Playground – Test Automation Practice Site
-
-This web application was created specifically for hands-on Playwright training, covering multiple UI components and real-world scenarios you’ll encounter during testing projects.
-
-🔍 Main Features to Automate
-Area	Description	Used In
-🏠 Home Page	Entry point for navigation and basic validations.	Lesson 1 — Text validation & navigation
-🔐 Login Page	Simple login form with success and error messages.	Lesson 2 — Login & interaction tests
-🧾 Form Page	Multiple input fields, dropdowns, checkboxes, and submit actions.	Lesson 3 — Forms & validation
-📊 Table Page	Dynamic data table with filters, sorting, and selection.	Lesson 5 — Dynamic tables
-🧪 API Data Page	Displays Pokémon data fetched from a public API.	Lesson 6 — API testing with PokéAPI
-🗂️ Tasks Page	CRUD system to add, edit, and remove tasks.	Lesson 7 — CRUD automation
-🏪 Store Page	Simulates an online store with stock, checkout, and payment.	Lesson 8 — Final project: Store automation
-💡 Goal
-
-The goal is to simulate real automation challenges in a safe and controlled environment.
-Each section of the Playground will be progressively automated as new Playwright features are introduced during the course.
-
-## 🧩 Tools & Technologies
-
-| Tool | Purpose |
-|------|----------|
-| **Playwright** | Main automation framework |
-| **Node.js** | Runtime environment for JavaScript/TypeScript |
-| **npm** | Package manager to install dependencies |
-| **VS Code** | Code editor with Playwright integration |
-| **Git** | Version control system |
-| **GitHub** | Repository hosting and collaboration |
+👉 **Playground – Test Automation Practice Site**
+[https://playground-drab-six.vercel.app/](https://playground-drab-six.vercel.app/)
 
 ---
 
-## 🛠️ Installation Guide
+# 🌐 Application Areas Covered
 
-### 1. Prerequisites
-Make sure you have the following installed on your machine:
-- [Node.js (LTS)](https://nodejs.org/)
-- [Git](https://git-scm.com/)
-- [Visual Studio Code](https://code.visualstudio.com/)
-
-### 2. Clone the Repository
-```bash
-git clone https://github.com/brunomachadors/playgroundautomation.git
-cd playgroundautomation
-```
-
-### 3. Install Dependencies
-```bash
-npm install
-# or
-pnpm install
-```
-
-### 4. Verify Playwright Setup
-```bash
-npx playwright install
-npx playwright test
-```
+| Area              | Description                                                  | Lesson   |
+| ----------------- | ------------------------------------------------------------ | -------- |
+| 🏠 Home           | Navigation & text validation                                 | Lesson 1 |
+| 🔐 Login          | Correct/incorrect login validation                           | Lesson 2 |
+| 🧾 Forms          | Inputs, selects, checkboxes                                  | Lesson 3 |
+| 🧱 POM            | Page Object Model structure                                  | Lesson 4 |
+| 📊 Dynamic Tables | Sorting, filtering                                           | Lesson 5 |
+| 🧪 API Page       | PokéAPI response validation                                  | Lesson 6 |
+| 🗂️ Tasks         | CRUD and reorder with drag & drop; desktop & mobile versions | Lesson 7 |
+| 🏪 Store          | Stock, checkout, payment — final project                     | Lesson 8 |
 
 ---
 
-## 🧠 Project Structure
+# 🧩 Tools & Technologies
+
+| Tool                | Purpose                          |
+| ------------------- | -------------------------------- |
+| **Playwright**      | Main automation framework        |
+| **Node.js**         | Runtime for JavaScript execution |
+| **VS Code**         | IDE with Playwright Test Runner  |
+| **Git/GitHub**      | Version control + submission     |
+| **Prettier/ESLint** | Code formatting (recommended)    |
+
+---
+
+# 📁 Updated Project Structure
 
 ```
 playwright-warmup/
 │
-├── tests/                  # Test files for each lesson
-│   ├── menu.spec.ts
-│   ├── login.spec.ts
-│   ├── login.spec.ts
-│   ├── pom.spec.ts
-│   ├── tables.spec.ts
-│   ├── api.spec.ts
-│   ├── toTo.spec.ts
-│   └── store.spec.ts
+├── tests/
+│   ├── specs/
+│   │   ├── desktop/            # Desktop UI tests
+│   │   ├── mobile/             # Mobile UI tests
+│   │   └── api/                # API tests
+│   │
+│   ├── pages/                  # Page Objects
+│   │   └── tasks.page.js
+│   │
+│   ├── data/                   # Test data (inputs, messages, constants)
+│   │   └── tasks.data.js
+│   │
+│   └── utils/                  # Helpers
 │
-├── pages/                  # Page Object Model (POM) structure
-│   ├── login.page.ts
-│   ├── form.page.ts
-│   └── dashboard.page.ts
-│
-├── data/                  # Helpers, constants, data
-│   └── login.ts
-│
-├── playwright.config.ts    # Playwright configuration file
+├── playwright.config.js        # Full multi-project configuration
 ├── package.json
 └── README.md
 ```
 
 ---
 
-## 🧭 Learning Path
+# ⚙️ Playwright Configuration Highlights
 
-| Lesson | Topic | Goal |
-|--------|--------|------|
-| **1** | Fundamentals + First Test | Understand automation concepts and run first test |
-| **2** | Login & Basic Interactions | Automate login flow and work with locators |
-| **3** | Forms & Validations | Fill out forms and validate UI feedback |
-| **4** | Page Object Model | Refactor and structure tests using POM |
-| **5** | Dynamic Tables | Work with table data and filters |
-| **6** | API Testing | Test APIs using Playwright’s APIRequestContext |
-| **7** | CRUD App Automation | Automate task management (create/edit/delete) |
-| **8** | Final Project: Store | Combine all knowledge into a full e-commerce flow |
+The updated config includes:
+
+* Multiple test directories (desktop, mobile, API)
+* Mobile device emulation (`Pixel 5`, `iPhone 12`)
+* Videos on failure
+* Screenshots on failure
+* Traces on first retry
+* Parallelization + CI-friendly defaults
+* Cleaner project mapping
+
+```js
+export default defineConfig({
+  testDir: './tests/specs',  
+  fullyParallel: true,
+  reporter: 'html',
+
+  use: {
+    baseURL: 'https://playground-drab-six.vercel.app',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
+
+  projects: [
+    {
+      name: 'Desktop Chrome',
+      testDir: './tests/specs/desktop',
+      use: devices['Desktop Chrome'],
+    },
+    {
+      name: 'Mobile iPhone',
+      testDir: './tests/specs/mobile',
+      use: devices['iPhone 12'],
+    },
+    {
+      name: 'Mobile Android',
+      testDir: './tests/specs/mobile',
+      use: devices['Pixel 5'],
+    },
+    {
+      name: 'API Tests',
+      testDir: './tests/specs/api',
+    },
+  ],
+});
+```
 
 ---
 
-## 🧪 Running Tests
+# 🧠 Page Object Model (Updated)
+
+The `TasksPage` class now includes:
+
+✔ Desktop + mobile locators
+✔ Desktop + mobile actions
+✔ Shared locators
+✔ Test steps (`test.step()`) for reporting
+✔ Clear method naming
+✔ Organized structure following top POM practices
+
+This allows students to write extremely clean tests like:
+
+```js
+await tasks.addTask(text);
+await tasks.expectTaskVisibleDesktop(1, text);
+```
+
+---
+
+# 🧪 Example Test Scenarios
+
+### ✓ Desktop
+
+* Add task
+* Edit task
+* Cancel edit
+* Complete task
+* Validate sequential ID generation
+* Reorder tasks (drag & drop)
+
+### ✓ Mobile
+
+* Add task
+* Edit task
+* Complete task
+* Validate priorities
+* Mobile-specific locators
+
+### ✓ API
+
+* GET Pokémon list
+* Validate response schema
+* Validate status codes
+* Extract and assert data
+
+---
+
+# 🧰 Running Tests
 
 ### Run all tests
+
 ```bash
 npx playwright test
 ```
 
-### Run a specific test file
+### Run desktop-only
+
 ```bash
-npx playwright test tests/lesson02_login.spec.ts
+npx playwright test --project="Desktop Chrome"
 ```
 
-### Run tests with UI mode
+### Run mobile-only
+
+```bash
+npx playwright test --project="Mobile iPhone"
+```
+
+### Run API tests
+
+```bash
+npx playwright test --project="API Tests"
+```
+
+### UI Mode (recommended for students)
+
 ```bash
 npx playwright test --ui
 ```
 
-### Generate and view report
+### Open last HTML report
+
 ```bash
 npx playwright show-report
 ```
 
 ---
 
-## 🧰 Troubleshooting
+# 💡 Additional Recommended Improvements
 
-| Issue | Solution |
-|--------|-----------|
-| `npx playwright test` not found | Ensure Node.js and npm are installed and available in PATH |
-| Browser not launching | Run `npx playwright install` to install necessary browsers |
-| Permission denied errors (macOS/Linux) | Use `sudo` or adjust file permissions |
-| Test timeout | Use `page.waitForSelector()` or increase test timeout in config |
+These are suggestions to further student learning:
 
----
+### ✔ Add linting & formatting
 
-## 🧑‍🏫 Course Context
+ESLint + Prettier help maintain consistent code style.
 
-This repository is used during the **Mindera Code Academy** course:  
-**“Warm-Up: Test Automation with Playwright”**, led by **Bruno Machado**.
+### ✔ Add environment switching
 
-The project covers the complete learning journey:
-- Setting up the environment
-- Understanding core Playwright concepts
-- Building structured automation projects
-- Practicing with real-life examples and final project delivery
+Use `dotenv` to load URLs for staging/production.
 
----
+### ✔ Add custom HTML reporter
 
-## 💬 Support
+You can integrate **Allure Reports**, which students love visually.
 
-If you encounter issues during setup or execution:
-- Ask during class 💬  
-- Open an issue on GitHub 🐞  
-- Check [Playwright Docs](https://playwright.dev/docs/intro)
+### ✔ Create challenges
 
----
+Provide students with:
 
-## 📜 License
+* Only the Page Objects
+* Only the data
+* A spec template
 
-This project is licensed under the MIT License — feel free to use it for learning or personal practice.
+And let them build the tests.
+
+### ✔ Add CI pipeline
+
+Github Actions or GitLab CI to run tests automatically.
 
 ---
 
-🧡 *Built for the Mindera Code Academy — empowering future testers to go beyond the manual mindset.*  
-**Instructor:** Bruno Machado  
-**Version:** 1.0.0
+# 🧑‍🏫 Course Context
+
+This project is part of the **Mindera Code Academy** and is maintained by:
+
+### **Instructor: Bruno Machado**
+
+The repository is used during 8 hands-on lessons covering everything from the fundamentals to a complete final project.
+
+---
+
+# 💬 Need Help?
+
+* Ask during class
+* Open an issue
+* Check Playwright docs: [https://playwright.dev/docs/intro](https://playwright.dev/docs/intro)
+
+---
+
+# 📜 License
+
+MIT License — free to use for teaching and personal development.
+
+---
+
+🧡 *Created for the Mindera Code Academy — empowering testers to think beyond manual testing.*
