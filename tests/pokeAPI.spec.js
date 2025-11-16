@@ -5,6 +5,8 @@ const BASE = 'https://pokeapi.co/api/v2/type/';
 
 test.describe('TYPES', () => {
   for (const typeData of TYPES) {
+
+    
     test(`Validate TYPE - ${typeData.name}`, async ({ request }) => {
       const response = await request.get(`${BASE}${typeData.name}`);
       expect(response.status()).toBe(200);
