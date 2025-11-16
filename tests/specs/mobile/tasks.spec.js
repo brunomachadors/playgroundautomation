@@ -1,10 +1,6 @@
-import { test, devices } from '@playwright/test';
-import { TasksPage } from './pages/tasks.page.js';
-import { TASK_CASES } from './data/tasks.data.js';
-
-test.use({
-  ...devices['iPhone 12'],
-});
+import { test } from '@playwright/test';
+import { TASK_CASES } from '../../data/tasks.data.js';
+import { TasksPage } from '../../pages/tasks.page.js';
 
 test.describe('TASKS - MOBILE', () => {
   test.beforeEach(async ({ page }) => {

@@ -1,5 +1,3 @@
-// tests/data/tasks.data.js
-
 export const TASK_CASES = {
   ADD: {
     scenario: 'Add single task',
