@@ -5,8 +5,6 @@ const BASE = 'https://pokeapi.co/api/v2/type/';
 
 test.describe('TYPES', () => {
   for (const typeData of TYPES) {
-
-    
     test(`Validate TYPE - ${typeData.name}`, async ({ request }) => {
       const response = await request.get(`${BASE}${typeData.name}`);
       expect(response.status()).toBe(200);
@@ -18,12 +16,12 @@ test.describe('TYPES', () => {
       const relations = body.damage_relations;
 
       if (typeData.doubleDamage) {
-        const doubleFrom = relations.double_damage_from.map(r => r.name);
+        const doubleFrom = relations.double_damage_from.map((r) => r.name);
         expect(doubleFrom).toContain(typeData.doubleDamage);
       }
 
       if (typeData.immune) {
-        const noDamageFrom = relations.no_damage_from.map(r => r.name);
+        const noDamageFrom = relations.no_damage_from.map((r) => r.name);
         expect(noDamageFrom).toContain(typeData.immune);
       }
     });
