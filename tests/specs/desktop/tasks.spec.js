@@ -23,8 +23,6 @@ test.describe('TASKS - DESKTOP', () => {
     await tasks.fillTaskInput(spaces);
     await tasks.clickSubmit();
     await tasks.expectNoTasks();
-
-    await tasks.todaysDate();
   });
 
   test('edit task', async ({ page }) => {
