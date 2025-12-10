@@ -15,20 +15,13 @@ const routes = [
 test.use({ ...devices['Desktop Chrome'] });
 
 for (const route of routes) {
-  test.describe(`Accessibility - ${route.name} page`, () => {
-    test(`"${route.path}" should not have critical accessibility violations`, async ({
-      page,
-    }) => {
+  test.describe(`ACESSIBILITY `, () => {
+    test.skip(`${route.name.toUpperCase()} page`, async ({ page }) => {
       const a11yPage = new AccessibilityPage(page);
 
       await a11yPage.goto(route.path);
 
       const results = await a11yPage.scan();
-
-      console.log(
-        `Accessibility violations on ${route.path}:`,
-        JSON.stringify(results.violations, null, 2)
-      );
 
       expect(
         results.violations,

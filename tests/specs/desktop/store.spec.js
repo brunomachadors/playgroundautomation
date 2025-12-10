@@ -7,6 +7,5 @@ test.describe('STORE', () => {
     const store = new StorePage(page);
     await store.navigateToStore();
     const { id, name, price, quantity } = PRODUCTS['lightsaber'];
-    console.log(id);
   });
 });
