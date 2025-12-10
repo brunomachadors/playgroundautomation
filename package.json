@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/brunomachadors/playgroundautomation#readme",
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.9.1"
+    "@types/node": "^24.9.1",
+    "axe-html-reporter": "^0.0.0"
   },
   "dependencies": {
     "dotenv": "^17.2.3"
