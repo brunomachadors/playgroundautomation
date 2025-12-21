@@ -14,8 +14,8 @@ const routes = [
 ];
 test.use({ ...devices['Desktop Chrome'] });
 
-for (const route of routes) {
-  test.describe(`ACESSIBILITY `, () => {
+test.describe(`ACESSIBILITY `, () => {
+  for (const route of routes) {
     test.skip(`${route.name.toUpperCase()} page`, async ({ page }) => {
       const a11yPage = new AccessibilityPage(page);
 
@@ -28,5 +28,5 @@ for (const route of routes) {
         formatViolations(results.violations, route.path)
       ).toEqual([]);
     });
-  });
-}
+  }
+});
