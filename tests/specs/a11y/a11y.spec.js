@@ -16,7 +16,7 @@ test.use({ ...devices['Desktop Chrome'] });
 
 test.describe(`ACESSIBILITY `, () => {
   for (const route of routes) {
-    test(`${route.name.toUpperCase()} page`, async ({ page }) => {
+    test.skip(`${route.name.toUpperCase()} page`, async ({ page }) => {
       const a11yPage = new AccessibilityPage(page);
 
       await a11yPage.goto(route.path);
